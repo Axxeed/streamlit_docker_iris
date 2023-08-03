@@ -25,6 +25,6 @@ if st.button('Prediction'):
         prediction = response.json()['prediction']
         probability = response.json()['probability']
         st.write(f'Espece : {prediction}')
-        st.write(f'Precision de la probabilité : {probability}')
+        st.write(f'Precision de la prediction : {probability} %')
     else:
         st.write(f'Some error occurred: {response.text}')
