@@ -2,7 +2,11 @@
 import streamlit as st
 import requests
 import json
+from PIL import Image
 
+setosa = Image.open('setosa.jpg')
+versi = Image.open('versi.jpg')
+virgi = Image.open('virginica.jpg')
 # Define the FastAPI server endpoint
 FASTAPI_SERVER_ENDPOINT = 'https://alexgdockerbota.azurewebsites.net/predict'
 
@@ -28,3 +32,10 @@ if st.button('Prediction'):
         st.write(f'Precision de la prediction : {probability} %')
     else:
         st.write(f'Some error occurred: {response.text}')
+
+    if prediction == "setosa":
+        st.image(setosa)
+    elif prediction == "virginica":
+        st.image(virgi)
+    elif prediction == "versicolor":
+        st.image(versi)
