@@ -7,13 +7,13 @@ import json
 FASTAPI_SERVER_ENDPOINT = 'https://alexgdockerbota.azurewebsites.net/predict'
 
 # Create the Streamlit form
-st.title("Iris Species Predictor")
-sepal_length = st.number_input('Insert sepal length')
-sepal_width = st.number_input('Insert sepal width')
-petal_length = st.number_input('Insert petal length')
-petal_width = st.number_input('Insert petal width')
+st.title("Predicition des especes d'Iris")
+sepal_length = st.number_input('Longueur du sepal')
+sepal_width = st.number_input('Largeur du sepal')
+petal_length = st.number_input('Longueur du petal')
+petal_width = st.number_input('Largeur du petal')
 
-if st.button('Predict Species'):
+if st.button('Prediction'):
     payload = {
         'sepal_length': sepal_length,
         'sepal_width': sepal_width,
@@ -24,6 +24,7 @@ if st.button('Predict Species'):
     if response.status_code == 200:
         prediction = response.json()['prediction']
         probability = response.json()['probability']
-        st.write(f'The predicted species is {prediction} with probability {probability}')
+        st.write(f'Espece : {prediction}')
+        st.write(f'Precision de la probabilité : {probability}')
     else:
         st.write(f'Some error occurred: {response.text}')
