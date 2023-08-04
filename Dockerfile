@@ -13,6 +13,3 @@ WORKDIR /app
 # install the packages from the Pipfile in the container
 RUN pip install pipenv
 RUN pipenv install --system --deploy --ignore-pipfile
-
-# execute the command python main.py (in the WORKDIR) to start the app
-CMD uvicorn app:app --host 0.0.0.0 --port $PORT
